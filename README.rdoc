@@ -7,14 +7,14 @@ Do the following:
 
 * Implement the font-awesome icon font. http://fortawesome.github.io/Font-Awesome/
 * Open up the two mocks in the project's root directory (ui_signin.png and ui_app.png).
-* Style the the sign-in page to look like the mock. 
+* Style the the sign-in page to look like the mock (ui_signin.png). 
 * Style the sign-up page using the patterns created while styling the sign-in page.
 * Implement client side validation for both forms.
   * Sign In form: Email and password fields should validate as “Required.”
   * Sign Up form: All fields should validate as “Required.” Passwords should match, and validate as such.
   * If the form has any invalid fields, the form should not submit.
 
-* Style the signed-in page (the page with the list of users) to look like the mock. Change the markup where necessary.
+* Style the signed-in page (the page with the list of users) to look like the mock (ui_app.png). Change the markup where necessary.
 * Clicking the user name should reveal a drop down with a link to the signed-in users profile, and a link to sign out, which should sign the user out. 
 * Clicking the x in a notification should hide the notification.
 
