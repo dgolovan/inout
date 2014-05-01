@@ -23,5 +23,6 @@ Bonus points for:
 * Using a grid system like the one in foundation or bootstrap.
 * Using a SASS mixin library like bourbon or compass.
 * Making the layout responsive.
+* Styling the user profile pages.
 
 
