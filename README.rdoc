@@ -15,6 +15,7 @@ Do the following:
 
 * Style the signed-in page (the page with the list of users) to look like the mock. Change the markup where necessary.
 * Clicking the user name should reveal a drop down with a link to the signed-in users profile, and a link to sign out, which should sign the user out. 
+* Clicking the x in a notification should hide the notification.
 
 Bonus points for:
 * Using a preprocessor like SASS.
