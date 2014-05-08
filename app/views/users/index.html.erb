@@ -1,23 +1,40 @@
-<p> 
-  <span class="name"> My status </span>
-  <span class="status status-<%=current_user.status%>"> <%= current_user.status %> </span>
-  <%= link_to("Edit", edit_user_path(current_user), :class => "update-link") %>
-</p>
-
-<div id="users-container">
-  <% @users.each do |user| %>
-    <p> 
-      <%= name_with_status(user.full_name, user.status, user.id) %>
-    </p>
-  <% end %>
+<div class="mystatus-row row"> 
+  <div class="col-md-8 col-sm-8 col-xs-8">
+    <div class="name"> Hello, <%=current_user.full_name%>. You are</div></div>
+  <div class="col-md-2 col-sm-2 col-xs-2">
+    <div class="status status-<%=current_user.status%>"><%= current_user.status %></div>
+  </div>
+  <div class="col-md-2 col-sm-2 col-xs-2">
+    <%= link_to("Edit", edit_user_path(current_user), :class => "update-link") %>
+  </div>
 </div>
 
+
+  <% @users.each do |user| %>
+    <div class="status-row row">
+      <div class="i-name-box col-md-8 col-sm-8 col-xs-8">
+        <span><i class="user-icon fa fa-user"></i></span>
+        <%= link_to(user.full_name, user_path(user.id), :class => "name") %>
+      </div>
+      <div class="col-md-2 col-sm-2 col-xs-2">
+        <div class="status status-<%=user.status%>"><%= user.status %></div>
+      </div>
+
+      <div class="col-md-2 col-sm-2 col-xs-2">
+        <%= link_to("Update", status_user_path(user.id), :class => "update-link") %>
+      </div>
+
+      <!-- <%= name_with_status(user.full_name, user.status, user.id) %> -->
+    </div>
+  <% end %>
+
+
 <script type="text/javascript">
-  $("#users-container a.update-link").click(function(){
-    var block = $(this).parent("p");
+  $(".status-row a.update-link").click(function(){
+    var block = $(this).closest("div.status-row");
     $.get($(this).attr("href"), function(data){
       $("a.name", block).html(data["full_name"]);
-      $("span.status", block).removeClass("status-in status-out").
+      $("div.status", block).removeClass("status-in status-out").
         addClass("status-"+data["status"]).html(data["status"]);
     });
     return false;

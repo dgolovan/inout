@@ -53,10 +53,18 @@ module ClioInOutStub
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
+    
     # Enable the asset pipeline
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    config.assets.initialize_on_precompile = true
+    
+    config.assets.paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
+    
+    # Take account of the bower_components directory that we're managing with Bower
+    #config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
   end
 end

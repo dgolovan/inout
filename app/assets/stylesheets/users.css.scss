@@ -1,0 +1,108 @@
+
+/* Status rows and all that's inside */
+.mystatus-row {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.status-row {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+/* Mixin for centering a content box */
+@mixin centered-box(){
+  @include display-box;
+  @include box-align(center);
+  padding: 0;
+  width: 48px;
+  height: 24px;
+}
+
+@mixin align-vert(){
+  position: absolute;
+  top: 50%;
+  @include translateY(-50%);
+}
+
+.status-row, .mystatus-row {
+  .user-icon {
+    color: $label-color;
+  }
+
+  /* This is the user icon and the circular border */
+  .user-icon::before {
+    @extend .fa;
+    @extend .fa-user;
+    @include display-box;
+    @include box-align(center);
+    @include box-pack(center);
+    @include border-radius(50%);
+    border: 2px solid $clio-grey;
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+  }
+
+  div.name {
+    /*@include nowrap;*/
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .i-name-box {
+    @include nowrap;
+    span {
+      display: inline-block;
+    }
+  }
+  a.name {
+    color: $label-color;
+    display: inline-block;
+    @include align-vert();
+  }
+
+  /* Generic status button setup */
+  .status {
+    @include centered-box();
+    @include box-pack(center);
+    @include border-radius(3px);
+    color: #FFF;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .update-link {
+    @include centered-box();
+    font-size: 14px;
+  }
+
+  & div:nth-child(3) {
+    padding-left: 0;
+  }
+}
+
+
+/* Particular status buttons */
+.status-out {
+  background-color: $clio-red;
+}
+.status-in {
+  background-color: $clio-green;
+}
+
+/* Vertically align the status buttons and edit/update links: only on status page - hence '.mystatus-row ~' */
+.mystatus-row ~ .status-row .status, .mystatus-row ~ .status-row .update-link {
+  @include translateY(50%);
+}
+
+
+/* User Profile related */
+.user-profile-box .status {
+  left: 15px;
+}
+.user-profile-box span.name {
+  display: inline-block;
+  @include align-vert();
+}

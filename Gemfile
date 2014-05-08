@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-
+gem 'rake',  '10.3.1' 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -18,9 +18,15 @@ group :assets do
   gem 'therubyracer', '0.12.1', :require => 'v8'
   gem 'execjs'
 
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sprockets-rails', '=2.0.0.backport1'
+  gem 'sprockets', '=2.2.2.backport2'
+  gem 'sass-rails', github: 'guilleiguaran/sass-rails', branch: 'backport'
 
+  #gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  
+  gem 'compass-rails','~> 1.0.3'
+  gem 'font-awesome-sass'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
@@ -28,6 +34,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.1.0'
 
 group :development, :test do
   gem 'faker'

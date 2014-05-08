@@ -1,0 +1,172 @@
+/* Common color variables */
+$navbar-color: #3a3d3f;
+$navbar-font-color: #ededed;
+$clio-grey: #d4d4d4;
+$clio-green: #16b45d;
+$clio-red: #c9282d;
+$label-color: #61676a;
+
+/* Mixin for button sizes, pardon the '!important' */
+@mixin std_button_size() {
+  padding: 5px 20px !important;
+  margin: 13px 0 !important;
+}
+
+
+/* Conserning the header navigation bar and all its components */
+#header {
+  @extend .navbar;
+  @extend .navbar-fixed-top;
+  @extend .navbar-inverse;
+  background-color: $navbar-color;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  & > .container-fluid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .navbar-brand {
+    @extend .navbar-brand;
+    font-size: 24px;
+    font-weight: bold;
+    color: $navbar-font-color
+  }
+
+  #collapse-nav {
+    @extend .collapse;
+    @extend .navbar-collapse;
+   
+    #nonauth-nav {
+      @extend .nav;
+      @extend .nav-pills; 
+      @extend .navbar-right;
+      a {
+        @extend .btn;
+        @extend .navbar-btn;
+        @include std_button_size();
+
+        font-weight: bold;
+        color: $navbar-font-color;
+      }
+    }
+
+    #my-menu {
+      @extend .nav;
+      @extend .navbar-nav;
+      @extend .navbar-text;
+      @extend .navbar-right;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      #my-dd-menu {
+        @extend .dropdown-menu;
+      }
+
+      & > li > a {
+        padding-bottom: 5px;
+        padding-right: 5px;
+      }
+      & > li.open > a, & > li.open > a:hover, & > li.open > a:active, & > li.open > a:focus {
+        background-color: $navbar-color;
+      }
+
+      & > li > a, & > li > a:hover {
+        color: #FFF;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      #my-dd-menu > li > a, #my-dd-menu > li > a:hover{
+        color: #000;
+        font-weight: bold;
+        text-decoration: none;
+        margin: 5px 0;
+      }
+    }
+
+  }
+}
+
+
+/* Form Labels and Input fields; Checkbox; Buttons */
+.styled-label, .checkbox .styled-label {
+  color: $label-color;
+  font-weight: bold;
+}
+.styled-input {
+  @extend .form-control;
+  border: 3px solid $clio-grey;
+}
+
+/* Custom Checkbox: hide the original and replace with a simple background patch + fontawesome icon */ 
+.checkbox {
+  position: relative;
+
+  input[type=checkbox] {
+    display: none;
+  }
+  label {
+    margin-left: 5px;
+  }
+  
+  label:before {  
+    content: "";  
+    display: inline-block;  
+    width: 18px;  
+    height: 18px;  
+    position: absolute;  
+    left: 0;
+    background-color: $clio-grey;
+    @include border-radius(3px);
+  }  
+
+  input[type=checkbox]:checked + label:before {
+    @extend .fa;
+    @extend .fa-check;
+    color: $label-color;  
+    text-align: center;  
+  }
+}
+
+.btn-submit {
+  @extend .btn;
+  @include std_button_size();
+  background: $clio-green;
+  color: #FFF;
+}
+
+
+/* Flash messages */
+.flash-msg.alert, .flash-msg.notice {
+  @include border-radius(3px);
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  .close-trig {
+    @extend .fa;
+    @extend .fa-times;
+    @extend .pull-right;
+    cursor: pointer;
+  }
+}
+
+.flash-msg::before {
+  padding-right: 4px;
+}
+
+.flash-msg.alert {
+   border: 3px solid $clio-red;
+   color: $clio-red;
+   @extend .fa;
+   @extend .fa-warning;
+}
+.flash-msg.notice {
+   border: 3px solid $clio-green;
+   color: $clio-green;
+   @extend .fa;
+   @extend .fa-check-circle;
+}
+
+/* Pad the body since we're using fixed navbar */
+body { padding-top: 90px; }

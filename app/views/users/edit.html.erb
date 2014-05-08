@@ -1,20 +1,29 @@
 <%= form_for(@user, :html => {:class => "styled-form"}) do |f| %>
-  <label class="styled-label"> My Status:     
+  <div class="form-group">
+    <label class="styled-label">My Status:</label>
     <%= f.select :status, User::STATUSES.keys, {}, :class => "styled-input" %>    
-  </label>
-  <label class="styled-label"> Email
-    <%= f.text_field :email, :class => "styled-input" %>    
-  </label>
-  <label class="styled-label"> First Name
-    <%= f.text_field :first_name, :class => "styled-input" %>    
-  </label>
-  <label class="styled-label"> Last Name
-    <%= f.text_field :last_name, :class => "styled-input" %>    
-  </label>
-  <label class="styled-label"> Web Site
-    <%= f.text_field :web_site, :class => "styled-input" %>    
-  </label>
+  </div>
 
-  <div><%= f.submit "Save" %></div>
+  <div class="form-group">
+    <label class="styled-label">Email</label>
+    <%= f.text_field :email, :class => "styled-input" %>    
+  </div>
+
+  <div class="form-group">
+    <label class="styled-label">First Name</label>
+    <%= f.text_field :first_name, :class => "styled-input" %>    
+  </div>
+
+  <div class="form-group">
+    <label class="styled-label">Last Name</label>
+    <%= f.text_field :last_name, :class => "styled-input" %>    
+  </div>
+
+  <div class="form-group">
+    <label class="styled-label">Web Site</label>
+    <%= f.text_field :web_site, :class => "styled-input" %>    
+  </div>
+
+  <div><%= f.submit "Save", :class => "btn-submit" %></div>
 
 <% end %>

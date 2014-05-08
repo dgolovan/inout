@@ -1,17 +1,23 @@
-<table>
-  <tr>
-    <td> Status: </td>
-    <td> <strong><%= @user.status %></strong> </td>
-  </tr>
-  <tr>
-    <td> Email: </td>
-    <td> <strong><%= @user.email %></strong> </td>
-  </tr>
-  <tr>
-    <td> Name: </td>
-    <td> <strong><%= @user.full_name %></strong> </td>
-  </tr>
-  <tr>
-    <td colspan="2"> <%= link_to "Web Site", @user.web_site %> </td>
-  </tr>
-</table>
+<div class="user-profile-box">
+  <div class="row status-row">
+    <div class="col-md-12">
+    <h3><span><i class="user-icon fa fa-user"></i></span> <span class="name"><%= @user.full_name %></span></h3>
+    </div>
+  </div>
+
+  <div class="row status-row">
+    <div class="col-md-4 col-sm-4 col-xs-4"><label>Current Status:</label></div>
+    <div class="col-md-2 col-sm-2 col-xs-2">
+      <div class="status status-<%= @user.status %>"><%= @user.status %></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-4"><label>E-Mail:</label></div>
+    <div class="col-md-6 col-sm-2 col-xs-2"><%= link_to(@user.email, 'mailto:'+@user.email) %></div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-sm-4 col-xs-4"><label>Website:</label></div>
+    <div class="col-md-6 col-sm-6 col-xs-6"><%= link_to(@user.web_site, @user.web_site) %></div>
+  </div>
+</div>
